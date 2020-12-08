@@ -2,6 +2,7 @@ package Game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class GameFrame {
 
@@ -15,12 +16,30 @@ public class GameFrame {
         GameVisual GV = new GameVisual(Board, SquareSize);
         GV.setLayout(null);
         JButton button1 = new JButton("Next Generation");
-        button1.setBounds(GameFrame.getSize().width/2-65, Board.MaxY*SquareSize+2, 130, 30);
+        button1.setBounds(GameFrame.getSize().width/3-70, Board.MaxY*SquareSize+2, 140, 30);
         button1.addActionListener(e -> {
             Board.nextGeneration();
             GV.Refresh();
         });
         GV.add(button1);
+
+        Thread AutoRun = new Thread(new AutoSimulate(Board, GV));
+
+        //AutoRun.interrupt();
+        JButton button2 = new JButton("Auto Generation");
+        button2.setBounds(GameFrame.getSize().width*2/3-70, Board.MaxY*SquareSize+2, 140, 30);
+        button2.addActionListener(e -> {
+            if(AutoRun.isAlive()){
+                AutoRun.interrupt();
+
+            }else{
+                AutoRun.start();
+            }
+
+            Board.nextGeneration();
+            GV.Refresh();
+        });
+        GV.add(button2);
 
 
         GameMouseListener GML = new GameMouseListener(SquareSize, Board, GV);
