@@ -31,7 +31,6 @@ public class GameFrame {
         button2.addActionListener(e -> {
             if(AutoRun.isAlive()){
                 AutoRun.interrupt();
-
             }else{
                 AutoRun.start();
             }
