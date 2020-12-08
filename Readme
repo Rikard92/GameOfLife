@@ -24,7 +24,7 @@ Installation with IDE
 
 Java classes
 -Main
-Holds the creation of the game and its visual representation.
+Holds the creation of the game and its visual representation. The size of the gameboard can be changed here, as well as the sizes of the squares painted.
 -GameBoard
 Holds then interworking and rules of the game, as well as functions to operate it. Has functions to determine what cell is going to live and with are going to die. Stores cell data in a matrix.
 -Cell
