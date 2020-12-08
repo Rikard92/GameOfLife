@@ -1,0 +1,39 @@
+Game of life
+Made by: Rikard Persson
+Java version: openjdk version "11.0.9.1" 2020-11-04
+IDE: IntelliJ IDEA 2020.3 (Community Edition)
+Build #IC-203.5981.155, built on November 30, 2020
+Runtime version: 11.0.9+11-b1145.21 amd64
+VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o.
+Windows 10 10.0
+GC: ParNew, ConcurrentMarkSweep
+
+Instalation with jar file
+
+1. Download zipfile from repository.
+2. Extract master file.
+3. Open and run "GameOfLife.jar"
+4. Play game
+
+Installation with IDE
+1. Download zipfile from repository.
+2. Open folder with InteliJ or similar IDE that can build and run java
+3. Navigate src->Game->Main
+4. Build and Run main
+5. Play game
+
+Java classes
+-Main
+Holds the creation of the game and its visual representation.
+-GameBoard
+Holds then interworking and rules of the game, as well as functions to operate it. Has functions to determine what cell is going to live and with are going to die. Stores cell data in a matrix.
+-Cell
+Holds the current and next state of the cell, with is used by the GameBoard class in order to keep track on the game.
+-GameFrame
+Creates a Graphical UI for the player to use in order to play the game. Has two buttons, one that fowards the game 1 generation, the other forwards it automaticity 1 second per generation.
+-GameVisual
+This class draws the cells on the GameFrame UI with a graphic component. It has a function that redraws the entire canvas.
+-GameMouseListener
+This class checks where the player is clicking on the GameFrame UI, in order to calculate what cell the player has selected. The cell will change its state form alive to dead, or vice versa when clicked.
+-AutoSimualte
+This class is an extension of runnable, with is apart of the thread that is uses to repetitively call the function that determine who lives and who does on the board. And then calls the function to refresh it. If the player click on the second button in the GUI with the Auto generate, this will start.
